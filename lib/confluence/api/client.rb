@@ -29,6 +29,11 @@ module Confluence
         JSON.parse(response.body)
       end
 
+      def search(params)
+        response = conn.get('rest/api/search/', params)
+        JSON.parse(response.body)['results']
+      end
+
       def create(params)
         response = conn.post do |req|
           req.url 'rest/api/content'
